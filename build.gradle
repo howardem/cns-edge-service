@@ -31,6 +31,7 @@ dependencies {
 	implementation 'org.springframework.cloud:spring-cloud-starter-circuitbreaker-reactor-resilience4j'
 	implementation 'org.springframework.cloud:spring-cloud-starter-config'
 	implementation 'org.springframework.boot:spring-boot-starter-data-redis-reactive'
+	implementation 'org.springframework.boot:spring-boot-starter-oauth2-client'
 	implementation 'org.springframework.session:spring-session-data-redis'
 	implementation 'org.yaml:snakeyaml:2.0'
 	
@@ -40,6 +41,7 @@ dependencies {
 
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.testcontainers:junit-jupiter'
+	testImplementation 'org.springframework.security:spring-security-test'
 }
 
 dependencyManagement {
@@ -56,11 +58,13 @@ tasks.named('test') {
 tasks.named("bootBuildImage") {
 	buildpacks = ["paketobuildpacks/adoptium:latest", "urn:cnb:builder:paketo-buildpacks/java"]
 	environment['BP_LIVE_RELOAD_ENABLED'] = true
+//	environment['BP_DATADOG_ENABLED'] = true
 }
 
 bootBuildImage {
 	imageName = "${project.name}"
 	environment = ["BP_JVM_VERSION" : "17.*", "BP_LIVE_RELOAD_ENABLED" : "true"]
+//	environment = ["BP_JVM_VERSION" : "17.*", "BP_LIVE_RELOAD_ENABLED" : "true", "BP_DATADOG_ENABLED" : "true"]
 
 	docker {
 		publishRegistry {

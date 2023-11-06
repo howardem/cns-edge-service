@@ -1,4 +1,4 @@
-package om.polarbookshop.gateway;
+package com.polarbookshop.gateway;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -1,4 +1,4 @@
-package om.polarbookshop.gateway;
+package com.polarbookshop.gateway;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
